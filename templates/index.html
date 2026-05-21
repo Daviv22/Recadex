@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercício Flask</title>
-</head>
-<body>
-    <main>
-        <form method="POST">
-            <label for="autor">Autor</label>
-            <input type="text" name="autor" id="autor">
+{% extends 'base.html' %}
 
-            <label for="mensagem">Recado</label>
-            <textarea id="mensagem" name="mensagem"></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </main>
-</body>
-</html>
+{% block title %}Novo Recado - Recadex{% endblock %}
+
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Deixe seu Recado</h2>
+    <form method="POST" class="space-y-4">
+        <div>
+            <label for="autor" class="block text-sm font-medium text-gray-600">Autor</label>
+            <input type="text" name="autor" id="autor" required
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 bg-gray-50 border focus:border-blue-500 focus:ring-blue-500">
+        </div>
+
+        <div>
+            <label for="mensagem" class="block text-sm font-medium text-gray-600">Recado</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required
+                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 bg-gray-50 border focus:border-blue-500 focus:ring-blue-500"></textarea>
+        </div>
+
+        <button type="submit" 
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+            Enviar
+        </button>
+    </form>
+</div>
+{% endblock %}

@@ -1,15 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Recados</title>
-</head>
-<body>
-    <main>
-        {% for recado in lista %}
-        <p>{{ recado }}</p>
-        {% endfor %}
-    </main>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Mural de Recados - Recadex{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-6 text-gray-800">Mural de Recados</h2>
+
+<div class="grid gap-4 md:grid-cols-2">
+    {% for recado in lista %}
+    <div class="bg-white p-4 rounded-lg shadow border-l-4 border-blue-500">
+        <p class="text-gray-800 italic">"{{ recado.mensagem }}"</p>
+        <div class="mt-2 text-right">
+            <span class="text-sm font-semibold text-gray-500">— {{ recado.autor }}</span>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-gray-500 col-span-2 text-center py-8">Nenhum recado por enquanto. Seja o primeiro a escrever!</p>
+    {% endfor %}
+</div>
+{% endblock %}
