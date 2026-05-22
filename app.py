@@ -27,6 +27,15 @@ def recado():
 def listar():
     return render_template('recados.html', lista=lista)
 
+@app.route("/recados/<autor>")
+def ver_recados_de(autor):
+    saida = []
+
+    for recado in lista:
+        if recado["autor"] == autor:
+            saida.append(recado)
+    return render_template("recados.html", lista=saida)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
